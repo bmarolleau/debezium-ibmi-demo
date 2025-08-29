@@ -5,6 +5,8 @@ services:
     image: quay.io/debezium/zookeeper:2.7.3.Final
     ports:
       - "2181:2181"
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
 
   kafka:
     image: debezium/kafka:2.7.3.Final 
@@ -14,10 +16,9 @@ services:
       - "9092:9092"
     environment:
       - ZOOKEEPER_CONNECT=zookeeper:2181
-      - KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092
-      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://kafka:9092
+      - KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:29092,PLAINTEXT_HOST://0.0.0.0:9092
+      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://kafka:29092,PLAINTEXT_HOST://localhost:9092
       - KAFKA_INTER_BROKER_LISTENER_NAME=PLAINTEXT
-
   connect:
     image: quay.io/debezium/connect:2.7.3.Final
     depends_on:
@@ -25,12 +26,12 @@ services:
     ports:
       - "8083:8083"
     environment:
-      - BOOTSTRAP_SERVERS=kafka:9092
+      - BOOTSTRAP_SERVERS=kafka:29092
       - GROUP_ID=1
       - CONFIG_STORAGE_TOPIC=connect_configs
       - OFFSET_STORAGE_TOPIC=connect_offsets
       - STATUS_STORAGE_TOPIC=connect_statuses
-      - SCHEMA_HISTORY_INTERNAL_KAFKA_BOOTSTRAP_SERVERS=kafka:9092
+      - SCHEMA_HISTORY_INTERNAL_KAFKA_BOOTSTRAP_SERVERS=kafka:29092
       - CONNECT_PLUGIN_PATH=/kafka/connect
     volumes:
       - ./plugins/debezium-connector-ibmi:/kafka/connect/debezium-connector-ibmi:ro
