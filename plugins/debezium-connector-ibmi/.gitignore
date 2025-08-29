@@ -1,0 +1,14 @@
+/target/
+log/
+.flattened-pom.xml
+hs_err*
+# eclipse
+.classpath
+.project
+.settings/
+# visual code
+.vscode/
+# intellij
+.idea/
+/.apt_generated/
+/.apt_generated_tests/

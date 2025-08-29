@@ -1,0 +1,27 @@
+{
+  "name": "db2i-connector",
+  "config": {
+    "connector.class": "io.debezium.connector.db2as400.As400RpcConnector",
+    "sanitize.field.names": "true",
+    "tasks.max": "1",
+    "secure": false, 
+    "poll.interval.ms": "2000",
+    "transforms": "unwrap",
+    "transforms.unwrap.delete.handling.mode": "rewrite",
+    "transforms.unwrap.drop.tombstones": "false",
+    "transforms.unwrap.type": "io.debezium.transforms.ExtractNewRecordState",
+    "snapshot.mode": "initial",
+    "key.converter.schema.registry.url": "http://schema-registry:8081",
+    "value.converter.schema.registry.url": "http://schema-registry:8081",
+    "snapshot.max.threads": 4,
+    "database.hostname": "10.3.61.2",
+    "database.dbname": "K70F3B70",
+    "database.user": "BENOIT",
+    "database.password": "xxxxx",
+    "database.driver.secure": "false",
+    "database.schema": "ACMEAIR",
+    "table.include.list": "ACMEAIR.CUSTOMER",
+    "topic.prefix": "db2i"
+  }
+}
+
