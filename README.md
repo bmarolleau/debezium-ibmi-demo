@@ -17,8 +17,11 @@ Before opting for such CDC implementation, take in consideration other alternati
 3) Use of a CDC technology, such as Debezium, that is journal-based (like other proprietary HA solutions on IBM i, but here it is free open source), to track and stream changes to another tier, that can be a database or another broker (kafka, mqtt, etc.). Debezium is a Kafka technology, where table events are published in Kafka topics hosted on a Kafka cluster before they are pushed to another component like a corporate message broker for example. This architecture is robust for real time use cases, open source based, with minimal performance and operational impact on IBM i (to be measured!). It also requires more technology than the previous options. Event/data replication is strongly consistent when tracking changes on one table. In the case of a domain event on multiple tables, it must be combined with the Outbox pattern.
 4) The ultimate solution could be CDC + **[Outbox pattern](https://microservices.io/patterns/data/transactional-outbox.html)**  with Debezium. It requires the creation of an outbox domain driven table that aggregates records from several tables on the source database (here Db2 for i) instead of streaming events separately like in option 3. This pattern ensures the atomicity of the CDC operation but requires additional changes in the database and applications. The option is robust and strongly consistent. 
 5) Finally, it is good to know that in addition to open source and community supported CDC solutions like Debezium, IBM CDC offering called **[IBM InfoSphere CDC Replication Engine](https://www.ibm.com/docs/en/idr/11.4.0?topic=replication-cdc-engine-db2-i)** is a robust and mature solution with many connectors available. Other vendors propose also CDC and/or journaling (log) based replication tools compatible with Db2 for i. 
+Debezium CDC connector for IBM i does not support all data types available with DB2 for i like **BLOB** (used with JSON tables) or Geospatial ST_Point, so there are still many things to validate on a specific environment and the devil is always in the details. 
 
 In this project, we'll mainly focus on **Debezium CDC** , that can easily be upgraded to CDC+Outbox with a few modifications ^^ 
+
+Please reach out if any questions.
 
 ### Setup Overview
 - **Run** your DB2 for i DDL and insert/update sample data.
