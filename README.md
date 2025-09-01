@@ -15,9 +15,10 @@ Before opting for such CDC implementation, take in consideration other alternati
 1) Use of a program on IBM i or externally that regularly polls the DB2 for i database and publish new records externally. Simple, but not necessarily real time.
 2) DB2 triggers feeding a data queue (*DTAQ), so any consumer like an external program relying on any technology that can use native IBM i objects like data queues (java, Apache Camel) can push events to MQTT. Triggers have performance impacts, and requires cautious management on the IBM i side.
 3) Use of a CDC technology, such as Debezium, that is journal-based (like other proprietary HA solutions on IBM i, but here it is free open source), to track and stream changes to another tier, that can be a database or another broker (kafka, mqtt, etc.). Debezium is a Kafka technology, where table events are published in Kafka topics hosted on a Kafka cluster before they are pushed to another component like a corporate message broker for example. This architecture is robust for real time use cases, open source based, with minimal performance and operational impact on IBM i (to be measured!). It also requires more technology than the previous options. Event/data replication is strongly consistent when tracking changes on one table. In the case of a domain event on multiple tables, it must be combined with the Outbox pattern.
-4) Finally, the ultimate solution could be CDC + **[Outbox pattern](https://microservices.io/patterns/data/transactional-outbox.html)**  with Debezium. It requires the creation of an outbox domain driven table that aggregates records from several tables on the source database (here Db2 for i) instead of streaming events separately like in option 3. This pattern ensures the atomicity of the CDC operation but requires additional changes in the database and applications. The option is robust and strongly consistent. 
+4) The ultimate solution could be CDC + **[Outbox pattern](https://microservices.io/patterns/data/transactional-outbox.html)**  with Debezium. It requires the creation of an outbox domain driven table that aggregates records from several tables on the source database (here Db2 for i) instead of streaming events separately like in option 3. This pattern ensures the atomicity of the CDC operation but requires additional changes in the database and applications. The option is robust and strongly consistent. 
+5) Finally, it is good to know that even if the open source community supports CDC solutions like Debezium, IBM CDC offering called **[IBM InfoSphere CDC Replication Engine](https://www.ibm.com/docs/en/idr/11.4.0?topic=replication-cdc-engine-db2-i)** , is a robust and mature solution with many connectors available. Other vendors propose also other CDC or journaling (log) based replication tools.
 
-In this project, we'll mainly focus on CDC but it can easily be upgrade to CDC+Outbox with a few modifications.
+In this project, we'll mainly focus on **Debezium CDC** but it can easily be upgraded to CDC+Outbox with a few modifications.
 
 ### Setup Overview
 - **Run** your DB2 for i DDL and insert/update sample data.
@@ -202,3 +203,12 @@ kafka-topics --list --bootstrap-server localhost:9092
 ````bash
 kafka-console-consumer --bootstrap-server localhost:9092 --topic db2i.ACMEAIR.CUSTOMER --from-beginning
 ````
+
+## References - Useful links
+- Connector: [Debezium Connector for i](https://github.com/debezium/debezium-connector-ibmi)
+- Debezium project: [FAQ](https://debezium.io/documentation/faq/)
+- Excellent article: [Kafka-based AI example using DayTrader](https://github.com/ThePrez/Kafka-DayTrader-AI-example/blob/main/README.md) by [ThePrez](https://github.com/ThePrez)
+ - Outbox Pattern: [Debezium Outbox Example](https://github.com/debezium/debezium-examples/tree/main/outbox) 
+ - Reliable Microservices Data Exchange With the Outbox Pattern: [Article](https://debezium.io/blog/2019/02/19/reliable-microservices-data-exchange-with-the-outbox-pattern/)
+ - [Aggregating Change Data Capture Events based on Transactional Boundaries](https://www.decodable.co/blog/aggregating-change-data-capture-events-based-on-transactional-boundaries)
+- Another consistency challenge: [Consistent Change Data Capture Across Multiple Tables](https://dzone.com/articles/consistent-change-data-capture-across-multiple-tab)
