@@ -1,5 +1,5 @@
 # Debezium CDC and IBM i: End-to-End CDC Pipeline
-This project describes how to set up a Change Data Capture (CDC) pipeline using Debezium with DB2 for i, Kafka, ksqlDB, and ActiveMQ (MQTT broker). The objective of such CDC solution is to capture and stream in real-time Change Events occuring on tables on DB2 for i, and publish these Events, .i.e. new or updated records (rows), to another consumer. Here the event will be published on a MQTT topic and the message contains each change event (insert, update). 
+This project describes how to set up a Change Data Capture (CDC) pipeline using Debezium with DB2 for i, Kafka, ksqlDB, and ActiveMQ (MQTT broker). The objective of such CDC solution is to capture and stream in real-time Change Events occuring on tables on DB2 for i, and publish these Events, .i.e. new or updated records (rows), to another consumer. Here, the event are published to a MQTT topic with a message containing change events (insert, update) on Db2 for i tables.  
 
 ![mqtt ibmi results](./assets/IBMi-DB2fori-Debezium-CDC-arch-overview.png)
 
