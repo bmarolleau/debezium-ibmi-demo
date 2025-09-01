@@ -1,0 +1,1504 @@
+{
+    "schema": {
+        "type": "struct",
+        "fields": [
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ITEM_ID"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ORDER_ID"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "SKU"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "QTY"
+            },
+            {
+                "type": "bytes",
+                "optional": false,
+                "name": "org.apache.kafka.connect.data.Decimal",
+                "version": 1,
+                "parameters": {
+                    "scale": "2",
+                    "connect.decimal.precision": "12"
+                },
+                "field": "UNIT_PRICE"
+            }
+        ],
+        "optional": false,
+        "name": "db2i.APP.ORDER_ITEMS.Value"
+    },
+    "payload": {
+        "ITEM_ID": 3,
+        "ORDER_ID": 2,
+        "SKU": "SKU-1002",
+        "QTY": 1,
+        "UNIT_PRICE": "Iyc="
+    }
+}
+{
+    "schema": {
+        "type": "struct",
+        "fields": [
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ITEM_ID"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ORDER_ID"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "SKU"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "QTY"
+            },
+            {
+                "type": "bytes",
+                "optional": false,
+                "name": "org.apache.kafka.connect.data.Decimal",
+                "version": 1,
+                "parameters": {
+                    "scale": "2",
+                    "connect.decimal.precision": "12"
+                },
+                "field": "UNIT_PRICE"
+            }
+        ],
+        "optional": false,
+        "name": "db2i.APP.ORDER_ITEMS.Value"
+    },
+    "payload": {
+        "ITEM_ID": 4,
+        "ORDER_ID": 3,
+        "SKU": "SKU-3001",
+        "QTY": 2,
+        "UNIT_PRICE": "JxA="
+    }
+}
+{
+    "schema": {
+        "type": "struct",
+        "fields": [
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ITEM_ID"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ORDER_ID"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "SKU"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "QTY"
+            },
+            {
+                "type": "bytes",
+                "optional": false,
+                "name": "org.apache.kafka.connect.data.Decimal",
+                "version": 1,
+                "parameters": {
+                    "scale": "2",
+                    "connect.decimal.precision": "12"
+                },
+                "field": "UNIT_PRICE"
+            }
+        ],
+        "optional": false,
+        "name": "db2i.APP.ORDER_ITEMS.Value"
+    },
+    "payload": {
+        "ITEM_ID": 5,
+        "ORDER_ID": 3,
+        "SKU": "SKU-4001",
+        "QTY": 1,
+        "UNIT_PRICE": "E4g="
+    }
+}
+{
+    "schema": {
+        "type": "struct",
+        "fields": [
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ITEM_ID"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ORDER_ID"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "SKU"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "QTY"
+            },
+            {
+                "type": "bytes",
+                "optional": false,
+                "name": "org.apache.kafka.connect.data.Decimal",
+                "version": 1,
+                "parameters": {
+                    "scale": "2",
+                    "connect.decimal.precision": "12"
+                },
+                "field": "UNIT_PRICE"
+            }
+        ],
+        "optional": false,
+        "name": "db2i.APP.ORDER_ITEMS.Value"
+    },
+    "payload": {
+        "ITEM_ID": 7,
+        "ORDER_ID": 5,
+        "SKU": "SKU-1003",
+        "QTY": 5,
+        "UNIT_PRICE": "Gp8="
+    }
+}
+{
+    "schema": {
+        "type": "struct",
+        "fields": [
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ITEM_ID"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ORDER_ID"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "SKU"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "QTY"
+            },
+            {
+                "type": "bytes",
+                "optional": false,
+                "name": "org.apache.kafka.connect.data.Decimal",
+                "version": 1,
+                "parameters": {
+                    "scale": "2",
+                    "connect.decimal.precision": "12"
+                },
+                "field": "UNIT_PRICE"
+            }
+        ],
+        "optional": false,
+        "name": "db2i.APP.ORDER_ITEMS.Value"
+    },
+    "payload": {
+        "ITEM_ID": 10,
+        "ORDER_ID": 8,
+        "SKU": "SKU-4002",
+        "QTY": 2,
+        "UNIT_PRICE": "Kv0="
+    }
+}
+{
+    "schema": {
+        "type": "struct",
+        "fields": [
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ITEM_ID"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ORDER_ID"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "SKU"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "QTY"
+            },
+            {
+                "type": "bytes",
+                "optional": false,
+                "name": "org.apache.kafka.connect.data.Decimal",
+                "version": 1,
+                "parameters": {
+                    "scale": "2",
+                    "connect.decimal.precision": "12"
+                },
+                "field": "UNIT_PRICE"
+            }
+        ],
+        "optional": false,
+        "name": "db2i.APP.ORDER_ITEMS.Value"
+    },
+    "payload": {
+        "ITEM_ID": 13,
+        "ORDER_ID": 11,
+        "SKU": "SKU-5002",
+        "QTY": 3,
+        "UNIT_PRICE": "DQI="
+    }
+}
+{
+    "schema": {
+        "type": "struct",
+        "fields": [
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ITEM_ID"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ORDER_ID"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "SKU"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "QTY"
+            },
+            {
+                "type": "bytes",
+                "optional": false,
+                "name": "org.apache.kafka.connect.data.Decimal",
+                "version": 1,
+                "parameters": {
+                    "scale": "2",
+                    "connect.decimal.precision": "12"
+                },
+                "field": "UNIT_PRICE"
+            }
+        ],
+        "optional": false,
+        "name": "db2i.APP.ORDER_ITEMS.Value"
+    },
+    "payload": {
+        "ITEM_ID": 19,
+        "ORDER_ID": 17,
+        "SKU": "SKU-1006",
+        "QTY": 2,
+        "UNIT_PRICE": "O5I="
+    }
+}
+{
+    "schema": {
+        "type": "struct",
+        "fields": [
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ITEM_ID"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ORDER_ID"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "SKU"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "QTY"
+            },
+            {
+                "type": "bytes",
+                "optional": false,
+                "name": "org.apache.kafka.connect.data.Decimal",
+                "version": 1,
+                "parameters": {
+                    "scale": "2",
+                    "connect.decimal.precision": "12"
+                },
+                "field": "UNIT_PRICE"
+            }
+        ],
+        "optional": false,
+        "name": "db2i.APP.ORDER_ITEMS.Value"
+    },
+    "payload": {
+        "ITEM_ID": 21,
+        "ORDER_ID": 19,
+        "SKU": "SKU-3003",
+        "QTY": 5,
+        "UNIT_PRICE": "Lhg="
+    }
+}
+{
+    "schema": {
+        "type": "struct",
+        "fields": [
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ITEM_ID"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ORDER_ID"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "SKU"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "QTY"
+            },
+            {
+                "type": "bytes",
+                "optional": false,
+                "name": "org.apache.kafka.connect.data.Decimal",
+                "version": 1,
+                "parameters": {
+                    "scale": "2",
+                    "connect.decimal.precision": "12"
+                },
+                "field": "UNIT_PRICE"
+            }
+        ],
+        "optional": false,
+        "name": "db2i.APP.ORDER_ITEMS.Value"
+    },
+    "payload": {
+        "ITEM_ID": 9,
+        "ORDER_ID": 7,
+        "SKU": "SKU-3002",
+        "QTY": 4,
+        "UNIT_PRICE": "NrA="
+    }
+}
+{
+    "schema": {
+        "type": "struct",
+        "fields": [
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ITEM_ID"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ORDER_ID"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "SKU"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "QTY"
+            },
+            {
+                "type": "bytes",
+                "optional": false,
+                "name": "org.apache.kafka.connect.data.Decimal",
+                "version": 1,
+                "parameters": {
+                    "scale": "2",
+                    "connect.decimal.precision": "12"
+                },
+                "field": "UNIT_PRICE"
+            }
+        ],
+        "optional": false,
+        "name": "db2i.APP.ORDER_ITEMS.Value"
+    },
+    "payload": {
+        "ITEM_ID": 11,
+        "ORDER_ID": 9,
+        "SKU": "SKU-1004",
+        "QTY": 1,
+        "UNIT_PRICE": "HX4="
+    }
+}
+{
+    "schema": {
+        "type": "struct",
+        "fields": [
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ITEM_ID"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ORDER_ID"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "SKU"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "QTY"
+            },
+            {
+                "type": "bytes",
+                "optional": false,
+                "name": "org.apache.kafka.connect.data.Decimal",
+                "version": 1,
+                "parameters": {
+                    "scale": "2",
+                    "connect.decimal.precision": "12"
+                },
+                "field": "UNIT_PRICE"
+            }
+        ],
+        "optional": false,
+        "name": "db2i.APP.ORDER_ITEMS.Value"
+    },
+    "payload": {
+        "ITEM_ID": 15,
+        "ORDER_ID": 13,
+        "SKU": "SKU-1005",
+        "QTY": 1,
+        "UNIT_PRICE": "ITQ="
+    }
+}
+{
+    "schema": {
+        "type": "struct",
+        "fields": [
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ITEM_ID"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ORDER_ID"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "SKU"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "QTY"
+            },
+            {
+                "type": "bytes",
+                "optional": false,
+                "name": "org.apache.kafka.connect.data.Decimal",
+                "version": 1,
+                "parameters": {
+                    "scale": "2",
+                    "connect.decimal.precision": "12"
+                },
+                "field": "UNIT_PRICE"
+            }
+        ],
+        "optional": false,
+        "name": "db2i.APP.ORDER_ITEMS.Value"
+    },
+    "payload": {
+        "ITEM_ID": 17,
+        "ORDER_ID": 15,
+        "SKU": "SKU-8001",
+        "QTY": 1,
+        "UNIT_PRICE": "Glk="
+    }
+}
+{
+    "schema": {
+        "type": "struct",
+        "fields": [
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ITEM_ID"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ORDER_ID"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "SKU"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "QTY"
+            },
+            {
+                "type": "bytes",
+                "optional": false,
+                "name": "org.apache.kafka.connect.data.Decimal",
+                "version": 1,
+                "parameters": {
+                    "scale": "2",
+                    "connect.decimal.precision": "12"
+                },
+                "field": "UNIT_PRICE"
+            }
+        ],
+        "optional": false,
+        "name": "db2i.APP.ORDER_ITEMS.Value"
+    },
+    "payload": {
+        "ITEM_ID": 22,
+        "ORDER_ID": 20,
+        "SKU": "SKU-4003",
+        "QTY": 1,
+        "UNIT_PRICE": "HZc="
+    }
+}
+{
+    "schema": {
+        "type": "struct",
+        "fields": [
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ITEM_ID"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ORDER_ID"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "SKU"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "QTY"
+            },
+            {
+                "type": "bytes",
+                "optional": false,
+                "name": "org.apache.kafka.connect.data.Decimal",
+                "version": 1,
+                "parameters": {
+                    "scale": "2",
+                    "connect.decimal.precision": "12"
+                },
+                "field": "UNIT_PRICE"
+            }
+        ],
+        "optional": false,
+        "name": "db2i.APP.ORDER_ITEMS.Value"
+    },
+    "payload": {
+        "ITEM_ID": 24,
+        "ORDER_ID": 22,
+        "SKU": "SKU-6002",
+        "QTY": 2,
+        "UNIT_PRICE": "EUQ="
+    }
+}
+{
+    "schema": {
+        "type": "struct",
+        "fields": [
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ITEM_ID"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ORDER_ID"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "SKU"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "QTY"
+            },
+            {
+                "type": "bytes",
+                "optional": false,
+                "name": "org.apache.kafka.connect.data.Decimal",
+                "version": 1,
+                "parameters": {
+                    "scale": "2",
+                    "connect.decimal.precision": "12"
+                },
+                "field": "UNIT_PRICE"
+            }
+        ],
+        "optional": false,
+        "name": "db2i.APP.ORDER_ITEMS.Value"
+    },
+    "payload": {
+        "ITEM_ID": 26,
+        "ORDER_ID": 24,
+        "SKU": "SKU-2005",
+        "QTY": 2,
+        "UNIT_PRICE": "MNM="
+    }
+}
+{
+    "schema": {
+        "type": "struct",
+        "fields": [
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ITEM_ID"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ORDER_ID"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "SKU"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "QTY"
+            },
+            {
+                "type": "bytes",
+                "optional": false,
+                "name": "org.apache.kafka.connect.data.Decimal",
+                "version": 1,
+                "parameters": {
+                    "scale": "2",
+                    "connect.decimal.precision": "12"
+                },
+                "field": "UNIT_PRICE"
+            }
+        ],
+        "optional": false,
+        "name": "db2i.APP.ORDER_ITEMS.Value"
+    },
+    "payload": {
+        "ITEM_ID": 27,
+        "ORDER_ID": 25,
+        "SKU": "SKU-3004",
+        "QTY": 2,
+        "UNIT_PRICE": "TiA="
+    }
+}
+{
+    "schema": {
+        "type": "struct",
+        "fields": [
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ITEM_ID"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ORDER_ID"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "SKU"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "QTY"
+            },
+            {
+                "type": "bytes",
+                "optional": false,
+                "name": "org.apache.kafka.connect.data.Decimal",
+                "version": 1,
+                "parameters": {
+                    "scale": "2",
+                    "connect.decimal.precision": "12"
+                },
+                "field": "UNIT_PRICE"
+            }
+        ],
+        "optional": false,
+        "name": "db2i.APP.ORDER_ITEMS.Value"
+    },
+    "payload": {
+        "ITEM_ID": 1,
+        "ORDER_ID": 1,
+        "SKU": "SKU-1001",
+        "QTY": 2,
+        "UNIT_PRICE": "E4g="
+    }
+}
+{
+    "schema": {
+        "type": "struct",
+        "fields": [
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ITEM_ID"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ORDER_ID"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "SKU"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "QTY"
+            },
+            {
+                "type": "bytes",
+                "optional": false,
+                "name": "org.apache.kafka.connect.data.Decimal",
+                "version": 1,
+                "parameters": {
+                    "scale": "2",
+                    "connect.decimal.precision": "12"
+                },
+                "field": "UNIT_PRICE"
+            }
+        ],
+        "optional": false,
+        "name": "db2i.APP.ORDER_ITEMS.Value"
+    },
+    "payload": {
+        "ITEM_ID": 2,
+        "ORDER_ID": 1,
+        "SKU": "SKU-2001",
+        "QTY": 1,
+        "UNIT_PRICE": "CAI="
+    }
+}
+{
+    "schema": {
+        "type": "struct",
+        "fields": [
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ITEM_ID"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ORDER_ID"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "SKU"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "QTY"
+            },
+            {
+                "type": "bytes",
+                "optional": false,
+                "name": "org.apache.kafka.connect.data.Decimal",
+                "version": 1,
+                "parameters": {
+                    "scale": "2",
+                    "connect.decimal.precision": "12"
+                },
+                "field": "UNIT_PRICE"
+            }
+        ],
+        "optional": false,
+        "name": "db2i.APP.ORDER_ITEMS.Value"
+    },
+    "payload": {
+        "ITEM_ID": 6,
+        "ORDER_ID": 4,
+        "SKU": "SKU-5001",
+        "QTY": 1,
+        "UNIT_PRICE": "E4c="
+    }
+}
+{
+    "schema": {
+        "type": "struct",
+        "fields": [
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ITEM_ID"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ORDER_ID"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "SKU"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "QTY"
+            },
+            {
+                "type": "bytes",
+                "optional": false,
+                "name": "org.apache.kafka.connect.data.Decimal",
+                "version": 1,
+                "parameters": {
+                    "scale": "2",
+                    "connect.decimal.precision": "12"
+                },
+                "field": "UNIT_PRICE"
+            }
+        ],
+        "optional": false,
+        "name": "db2i.APP.ORDER_ITEMS.Value"
+    },
+    "payload": {
+        "ITEM_ID": 8,
+        "ORDER_ID": 6,
+        "SKU": "SKU-2002",
+        "QTY": 2,
+        "UNIT_PRICE": "IzI="
+    }
+}
+{
+    "schema": {
+        "type": "struct",
+        "fields": [
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ITEM_ID"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ORDER_ID"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "SKU"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "QTY"
+            },
+            {
+                "type": "bytes",
+                "optional": false,
+                "name": "org.apache.kafka.connect.data.Decimal",
+                "version": 1,
+                "parameters": {
+                    "scale": "2",
+                    "connect.decimal.precision": "12"
+                },
+                "field": "UNIT_PRICE"
+            }
+        ],
+        "optional": false,
+        "name": "db2i.APP.ORDER_ITEMS.Value"
+    },
+    "payload": {
+        "ITEM_ID": 12,
+        "ORDER_ID": 10,
+        "SKU": "SKU-2003",
+        "QTY": 2,
+        "UNIT_PRICE": "U/w="
+    }
+}
+{
+    "schema": {
+        "type": "struct",
+        "fields": [
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ITEM_ID"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ORDER_ID"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "SKU"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "QTY"
+            },
+            {
+                "type": "bytes",
+                "optional": false,
+                "name": "org.apache.kafka.connect.data.Decimal",
+                "version": 1,
+                "parameters": {
+                    "scale": "2",
+                    "connect.decimal.precision": "12"
+                },
+                "field": "UNIT_PRICE"
+            }
+        ],
+        "optional": false,
+        "name": "db2i.APP.ORDER_ITEMS.Value"
+    },
+    "payload": {
+        "ITEM_ID": 14,
+        "ORDER_ID": 12,
+        "SKU": "SKU-6001",
+        "QTY": 2,
+        "UNIT_PRICE": "GXg="
+    }
+}
+{
+    "schema": {
+        "type": "struct",
+        "fields": [
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ITEM_ID"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ORDER_ID"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "SKU"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "QTY"
+            },
+            {
+                "type": "bytes",
+                "optional": false,
+                "name": "org.apache.kafka.connect.data.Decimal",
+                "version": 1,
+                "parameters": {
+                    "scale": "2",
+                    "connect.decimal.precision": "12"
+                },
+                "field": "UNIT_PRICE"
+            }
+        ],
+        "optional": false,
+        "name": "db2i.APP.ORDER_ITEMS.Value"
+    },
+    "payload": {
+        "ITEM_ID": 16,
+        "ORDER_ID": 14,
+        "SKU": "SKU-7001",
+        "QTY": 2,
+        "UNIT_PRICE": "Jxo="
+    }
+}
+{
+    "schema": {
+        "type": "struct",
+        "fields": [
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ITEM_ID"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ORDER_ID"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "SKU"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "QTY"
+            },
+            {
+                "type": "bytes",
+                "optional": false,
+                "name": "org.apache.kafka.connect.data.Decimal",
+                "version": 1,
+                "parameters": {
+                    "scale": "2",
+                    "connect.decimal.precision": "12"
+                },
+                "field": "UNIT_PRICE"
+            }
+        ],
+        "optional": false,
+        "name": "db2i.APP.ORDER_ITEMS.Value"
+    },
+    "payload": {
+        "ITEM_ID": 18,
+        "ORDER_ID": 16,
+        "SKU": "SKU-9001",
+        "QTY": 1,
+        "UNIT_PRICE": "OO8="
+    }
+}
+{
+    "schema": {
+        "type": "struct",
+        "fields": [
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ITEM_ID"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ORDER_ID"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "SKU"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "QTY"
+            },
+            {
+                "type": "bytes",
+                "optional": false,
+                "name": "org.apache.kafka.connect.data.Decimal",
+                "version": 1,
+                "parameters": {
+                    "scale": "2",
+                    "connect.decimal.precision": "12"
+                },
+                "field": "UNIT_PRICE"
+            }
+        ],
+        "optional": false,
+        "name": "db2i.APP.ORDER_ITEMS.Value"
+    },
+    "payload": {
+        "ITEM_ID": 20,
+        "ORDER_ID": 18,
+        "SKU": "SKU-2004",
+        "QTY": 2,
+        "UNIT_PRICE": "KQw="
+    }
+}
+{
+    "schema": {
+        "type": "struct",
+        "fields": [
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ITEM_ID"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ORDER_ID"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "SKU"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "QTY"
+            },
+            {
+                "type": "bytes",
+                "optional": false,
+                "name": "org.apache.kafka.connect.data.Decimal",
+                "version": 1,
+                "parameters": {
+                    "scale": "2",
+                    "connect.decimal.precision": "12"
+                },
+                "field": "UNIT_PRICE"
+            }
+        ],
+        "optional": false,
+        "name": "db2i.APP.ORDER_ITEMS.Value"
+    },
+    "payload": {
+        "ITEM_ID": 23,
+        "ORDER_ID": 21,
+        "SKU": "SKU-5003",
+        "QTY": 3,
+        "UNIT_PRICE": "N/0="
+    }
+}
+{
+    "schema": {
+        "type": "struct",
+        "fields": [
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ITEM_ID"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ORDER_ID"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "SKU"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "QTY"
+            },
+            {
+                "type": "bytes",
+                "optional": false,
+                "name": "org.apache.kafka.connect.data.Decimal",
+                "version": 1,
+                "parameters": {
+                    "scale": "2",
+                    "connect.decimal.precision": "12"
+                },
+                "field": "UNIT_PRICE"
+            }
+        ],
+        "optional": false,
+        "name": "db2i.APP.ORDER_ITEMS.Value"
+    },
+    "payload": {
+        "ITEM_ID": 25,
+        "ORDER_ID": 23,
+        "SKU": "SKU-1007",
+        "QTY": 1,
+        "UNIT_PRICE": "PEY="
+    }
+}
+{
+    "schema": {
+        "type": "struct",
+        "fields": [
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ITEM_ID"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ORDER_ID"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "SKU"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "QTY"
+            },
+            {
+                "type": "bytes",
+                "optional": false,
+                "name": "org.apache.kafka.connect.data.Decimal",
+                "version": 1,
+                "parameters": {
+                    "scale": "2",
+                    "connect.decimal.precision": "12"
+                },
+                "field": "UNIT_PRICE"
+            }
+        ],
+        "optional": false,
+        "name": "db2i.APP.ORDER_ITEMS.Value"
+    },
+    "payload": {
+        "ITEM_ID": 28,
+        "ORDER_ID": 26,
+        "SKU": "SKU-4004",
+        "QTY": 2,
+        "UNIT_PRICE": "Y6Y="
+    }
+}
+{
+    "schema": {
+        "type": "struct",
+        "fields": [
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ITEM_ID"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ORDER_ID"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "SKU"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "QTY"
+            },
+            {
+                "type": "bytes",
+                "optional": false,
+                "name": "org.apache.kafka.connect.data.Decimal",
+                "version": 1,
+                "parameters": {
+                    "scale": "2",
+                    "connect.decimal.precision": "12"
+                },
+                "field": "UNIT_PRICE"
+            }
+        ],
+        "optional": false,
+        "name": "db2i.APP.ORDER_ITEMS.Value"
+    },
+    "payload": {
+        "ITEM_ID": 29,
+        "ORDER_ID": 27,
+        "SKU": "SKU-1008",
+        "QTY": 1,
+        "UNIT_PRICE": "Dac="
+    }
+}
+{
+    "schema": {
+        "type": "struct",
+        "fields": [
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ITEM_ID"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ORDER_ID"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "SKU"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "QTY"
+            },
+            {
+                "type": "bytes",
+                "optional": false,
+                "name": "org.apache.kafka.connect.data.Decimal",
+                "version": 1,
+                "parameters": {
+                    "scale": "2",
+                    "connect.decimal.precision": "12"
+                },
+                "field": "UNIT_PRICE"
+            }
+        ],
+        "optional": false,
+        "name": "db2i.APP.ORDER_ITEMS.Value"
+    },
+    "payload": {
+        "ITEM_ID": 30,
+        "ORDER_ID": 28,
+        "SKU": "SKU-2006",
+        "QTY": 2,
+        "UNIT_PRICE": "Kvg="
+    }
+}
+{
+    "schema": {
+        "type": "struct",
+        "fields": [
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ITEM_ID"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ORDER_ID"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "SKU"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "QTY"
+            },
+            {
+                "type": "bytes",
+                "optional": false,
+                "name": "org.apache.kafka.connect.data.Decimal",
+                "version": 1,
+                "parameters": {
+                    "scale": "2",
+                    "connect.decimal.precision": "12"
+                },
+                "field": "UNIT_PRICE"
+            }
+        ],
+        "optional": false,
+        "name": "db2i.APP.ORDER_ITEMS.Value"
+    },
+    "payload": {
+        "ITEM_ID": 31,
+        "ORDER_ID": 29,
+        "SKU": "SKU-3005",
+        "QTY": 1,
+        "UNIT_PRICE": "OK4="
+    }
+}
+{
+    "schema": {
+        "type": "struct",
+        "fields": [
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ITEM_ID"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ORDER_ID"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "SKU"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "QTY"
+            },
+            {
+                "type": "bytes",
+                "optional": false,
+                "name": "org.apache.kafka.connect.data.Decimal",
+                "version": 1,
+                "parameters": {
+                    "scale": "2",
+                    "connect.decimal.precision": "12"
+                },
+                "field": "UNIT_PRICE"
+            }
+        ],
+        "optional": false,
+        "name": "db2i.APP.ORDER_ITEMS.Value"
+    },
+    "payload": {
+        "ITEM_ID": 32,
+        "ORDER_ID": 30,
+        "SKU": "SKU-4005",
+        "QTY": 3,
+        "UNIT_PRICE": "Kww="
+    }
+}

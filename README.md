@@ -1,16 +1,193 @@
-# debezium-ibmi-demo
+# Debezium CDC and IBM i: End-to-End CDC Pipeline
+This project describes how to set up a Change Data Capture (CDC) pipeline using Debezium with DB2 for i, Kafka, ksqlDB, and ActiveMQ (MQTT broker). The objective of such CDC solution is to capture and stream in real-time Change Events occuring on tables on DB2 for i, and publish these Events, .i.e. new or updated records (rows), to another consumer. Here the event will be published on a MQTT topic and the message contains each change event (insert, update). 
 
-Quick demo of Debezium with IBM i 
+![mqtt ibmi results](./assets/IBMi-DB2fori-Debezium-CDC-arch-overview.png)
 
-## quick notes
+This example demonstrates how to use Debezium with DB2 for i to capture CDC, and deliver business events to an MQTT broker for IoT or event-driven microservices. Optionnally, we will transform raw row-level changes with ksqlDB declarative SQL, so we can stream and aggregate records on the fly before publishing them to the MQTT topic. 
 
-Install process with docker compose + DB2 for i plugin download from Maven Central
+The final goal is to capture order-related changes from DB2 for i, publish Change Events on separate streams. 
+In phase 2, we will aggregate orders, customers, and items into a single event, and publish that enriched event to MQTT.
 
-## How to test 
+## CDC or not CDC ?
+
+Here is the definition: "Change data capture (CDC) is a pattern that enables database changes to be monitored and propagated to downstream systems. It is an effective way of enabling reliable microservices integration and solving typical challenges, such as gradually extracting microservices from existing monoliths."
+This Event-driven architecture is related to Cloud Design Patterns such as CDC, Outbox, CQRS, Event Sourcing. 
+Below, you'll find a list of possible alternatives that differ in complexity, performance vs. transactional throughput, consistency model...
+1) Write a program on IBM i or externally that regularly poll the DB2 for i database and publish new records externally. 
+2) Use of DB2 triggers feeding a data queue (*DTAQ), so any consumer like an external program relying on any technology that can use native IBM i objects like data queues (java, Apache Camel) can push events to MQTT 
+3) Use of a CDC technology, here Debezium, journal-based, to stream changes to another tier. Debezium is a Kafka technology, so table events will be publish on Kafka topics before we can push them to another component like a MQTT broker. This architecture is robust but requires more technologies, and it is eventually consistent. Optionally
+4) Outbox pattern with Debezium which requires the creation of an outbox domain driven table that aggregates records from several tables on the source database (here Db2 for i) instead of streaming events separately like in option 3. This pattern ensures the atomicity of the CDC operation but requires additional changes in the database and applications. 
+
+
+### Setup Overview
+- Run your DB2 for i DDL and insert/update sample data.
+- Start the CDC streaming stack with podman-compose or docker-compose
+- Create Debezium (in) and MQTT (sink, out) Connectors via curl.
+- Generate events on the source database & check
+- In a second step (work in progress) , Run the ksql SQL script to create the materialized tables and aggregate events on the fly. Indeed, the business objective is to publish shipping/billing information to MQTT, and not separate table events.
+
+### Setup in 5 steps
+#### 1) Database Setup (DB2 for i)
+
+```
+git clone https://github.com/bmarolleau/debezium-ibmi-demo
+```
+
+Run the following DDL `db2i-ddl.sql` on your DB2 for i system to create the schema and tables. 
+
+#### 2) Debezium & MQTT Kafka Connectors 
+
+Download & install the latest connectors: 
+1. [debezium-connector-ibmi](https://github.com/debezium/debezium-connector-ibmi) latest release on [Maven Central](https://central.sonatype.com/artifact/io.debezium/debezium-connector-ibmi) . Use for example the 3.2.1-Final jar file available [here](https://repo1.maven.org/maven2/io/debezium/debezium-connector-ibmi/3.2.1.Final/debezium-connector-ibmi-3.2.1.Final-plugin.tar.gz) then extract all jars.
+
+2. MQTT Sink Kafka Connector. Here I used Lense.io [Stream Reactor](https://github.com/lensesio/stream-reactor) downloadable [here](https://github.com/lensesio/stream-reactor/releases) 
+
+3. Copy all jar files in the plugins directory, in their respective subfolder. 
+
+#### 3) Start Kafka, Debezium, MQTT and tools 
+
+````
+docker-compose up -d 
+````
+The following file podman-compose.yml runs: 
+- Kafka broker (in KRaft mode, no zookeeper needed)
+- Kafka Connect with Debezium+MQTT plugins loaded
+- Debezium UI (for browsing connectors)
+- ActiveMQ with MQTT support
+- Optionnally: ksqlDB server + CLI (optional, for event streaming join between tables/topics)
+
+This present docker-compose.yml file was tested on MacoS with Docker, and can be adapted for podman. Please feel free to PR if any suggestions.
+
+#### 4) Create Kafka Connect Connectors
+##### Debezium DB2 for i Source Connector
+
+Customize `db2i-connector.json` with your credentials, library, table names, then run 
+
+```bash 
+curl -X POST -H "Content-Type: application/json" \
+  --data @db2i-connector.json \
+  http://localhost:8083/connectors
+  ```
+##### MQTT Sink Connectors
+
+Let's create a Sink connector for each table to capture. In fact each table is captured in a Kafka topic, then used by a Sink connector to publis a message to the appropriate MQTT topic.
+
+Customize `mqtt-customers-sink.json`, `mqtt-orders-sink.json`, `mqqt-order-items-sink.json` with your credentials, mqtt broker, topic information then run the following commands:  
+
+````bash
+curl -X POST -H "Content-Type: application/json" \
+  --data @mqtt-customers-sink.json \
+  http://localhost:8083/connectors
+
+curl -X POST -H "Content-Type: application/json" \
+  --data @mqtt-orders-sink.json \
+  http://localhost:8083/connectors
+
+curl -X POST -H "Content-Type: application/json" \
+  --data @mqtt-order-items-sink.json \
+  http://localhost:8083/connectors
+  ````
+
+List the connectors using this API:
+```bash
+curl -X GET http://localhost:8083/connectors/
+["db2i-orders-cdc","mqtt-customers-sink","mqtt-orders-sink","mqtt-order-items-sink"]% 
+```
+Note that you can always remove a misconfigured connector with:
+```bash
+curl -X DELETE http://localhost:8083/connectors/<connector-name>
+```
+where `<connector-name>` is the connector to delete.
+
+**Your 3 tables *customers* , *orders*, and *order-itmes* are now captures by Debezium and the Change Events are published to a MQTT Broker !!**
+
+
+#### 5) Testing the Pipeline
+
+1) Check Kafka topics: Open a terminal and consume a kafka topic (use Kafka CLI)
+````bash
+kafka-console-consumer --bootstrap-server localhost:9092 --topic db2i.APP.CUSTOMERS   --from-beginning
+````
+Adapt with other topics like `db2i.APP.ORDERS` or `db2i.APP.ORDER_ITEMS`
+
+
+2) Verify MQTT Messages: Open another terminal, and run mosquitto_sub (to download first) or any MQTT client:
+`````bash
+mosquitto_sub -h localhost -p 1883 -u admin -P password -t "mqtt/#" -v
+`````
+You can also subscribe to  `"mqtt/customers"` `"mqtt/orders"` or `"mqtt/order-items"` topics instead of the wildcard `"mqtt/#"`
+
+3) Simulate database activity
+Open a third window with your favorite database tool and run several Db2 for i SQL insert or update or delete in your table and see the resulting events in your MQTT broker. 
+
+Below some sample SQL statements with a transaction and a few db read/writes/updates:
+```sql
+SET TRANSACTION ISOLATION LEVEL SERIALIZABLE ;
+INSERT INTO APP.CUSTOMERS (NAME, EMAIL) VALUES ('Alice', 'alice11@example.com');
+-- SELECT * FROM APP.CUSTOMERS;
+UPDATE APP.CUSTOMERS SET NAME='Alice Smith' where CUSTOMER_ID=1;
+INSERT INTO APP.ORDERS (CUSTOMER_ID, STATUS, TOTAL_AMOUNT) VALUES (1, 'CREATED', 120.50);
+-- SELECT * FROM APP.ORDERS;
+INSERT INTO APP.ORDER_ITEMS (ORDER_ID, SKU, QTY, UNIT_PRICE) VALUES(31, 'SKU-1001', 2, 50.00);
+-- SELECT * FROM APP.ORDER_ITEMS;
+COMMIT;
+UPDATE APP.ORDERS SET STATUS='SHIPPED' WHERE ORDER_ID=31;
+SELECT * FROM APP.ORDERS;
+````
+
+4) See the final result. **Congratulations!**
+You should see JSON message forwarded to MQTT.
+
+![mqtt ibmi results](./assets/e2e-result.png)
+
+
+## ksqlDB Aggregations 
+**draft - work in progress**
+
+The objective is to join streams using Kafka Streams and ksqlDB settings before publishing messages to MQTT.
+
+![mqtt ibmi ksqlDB](./assets/IBMi-DB2fori-Debezium-ksql.png)
+
+
+
+
+````bash
+podman exec -i ksqldb-cli ksql http://ksqldb-server:8088 < ./ksql/ksql-setup.sql
+````
+Check what is created using ksql :  
+````bash
+docker exec -i ksqldb-cli ksql http://ksqldb-server:8088
+````
+
+````bash
+ksql> show tables;
+
+ Table Name      | Kafka Topic     | Key Format | Value Format | Windowed 
+
+ CUSTOMERS_TABLE | CUSTOMERS_TABLE | KAFKA      | JSON         | false    
+ ORDERS_TABLE    | ORDERS_TABLE    | KAFKA      | JSON         | false    
+ ORDER_AGGREGATE | ORDER_AGGREGATE | KAFKA      | JSON         | false    
+ ORDER_ITEMS_AGG | ORDER_ITEMS_AGG | KAFKA      | JSON         | false    
+````
+````bash
+ksql> show streams;
+
+ Stream Name     | Kafka Topic          | Key Format | Value Format | Windowed 
+
+ CUSTOMERS       | CUSTOMERS            | KAFKA      | JSON         | false    
+ CUSTOMERS_RAW   | db2i.APP.CUSTOMERS   | KAFKA      | JSON         | false    
+ ORDERS          | ORDERS               | KAFKA      | JSON         | false    
+ ORDERS_RAW      | db2i.APP.ORDERS      | KAFKA      | JSON         | false    
+ ORDER_ITEMS     | ORDER_ITEMS          | KAFKA      | JSON         | false    
+ ORDER_ITEMS_RAW | db2i.APP.ORDER_ITEMS | KAFKA      | JSON         | false   
+
+````
+
+## Appendices: Kafka commands 
 
 Install a Kafka client, and run the samples commands below :
 1. Create topic
-```
+````
 kafka-topics --create --topic test --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1
 ````
 2. Produce on topic (publish)
@@ -20,32 +197,8 @@ kafka-console-producer --broker-list localhost:9092 --topic test
 3. List topics
 ````
 kafka-topics --list --bootstrap-server localhost:9092
-__consumer_offsets
-connect_configs
-connect_offsets
-connect_statuses
-db2i.ACMEAIR.CUSTOMER
-test
 ````
 4. Consome on a topic, here on CUSTOMER table: 
-````
+````bash
 kafka-console-consumer --bootstrap-server localhost:9092 --topic db2i.ACMEAIR.CUSTOMER --from-beginning
 ````
-Result payload on row update:
-
-    "payload": {
-        "ID": "uid0@email.com",
-        "PASSWORD": "pass2",
-        "STATUS": "password",
-        "TOTAL_MILES": 1032696,
-        "MILES_YTD": 0,
-        "PHONENUMBER": "919-123-4567",
-        "PHONENUMBERTYPE": "BUSINESS",
-        "STREETADDRESS1": "156 Main Street",
-        "STREETADDRESS2": "address-na",
-        "CITY": "MontpellierLONGLIVE",
-        "STATEPROVINCE": "27617",
-        "COUNTRY": "USA",
-        "POSTALCODE": "27648"
-    }
-

@@ -1,0 +1,205 @@
+{
+    "schema": {
+        "type": "struct",
+        "fields": [
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ORDER_ID"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "CUSTOMER_ID"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "STATUS"
+            },
+            {
+                "type": "bytes",
+                "optional": false,
+                "name": "org.apache.kafka.connect.data.Decimal",
+                "version": 1,
+                "parameters": {
+                    "scale": "2",
+                    "connect.decimal.precision": "12"
+                },
+                "field": "TOTAL_AMOUNT"
+            }
+        ],
+        "optional": false,
+        "name": "db2i.APP.ORDERS.Value"
+    },
+    "payload": {
+        "ORDER_ID": 1,
+        "CUSTOMER_ID": 1,
+        "STATUS": "CREATED",
+        "TOTAL_AMOUNT": "LxI="
+    }
+}
+{
+    "schema": {
+        "type": "struct",
+        "fields": [
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ORDER_ID"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "CUSTOMER_ID"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "STATUS"
+            },
+            {
+                "type": "bytes",
+                "optional": false,
+                "name": "org.apache.kafka.connect.data.Decimal",
+                "version": 1,
+                "parameters": {
+                    "scale": "2",
+                    "connect.decimal.precision": "12"
+                },
+                "field": "TOTAL_AMOUNT"
+            }
+        ],
+        "optional": false,
+        "name": "db2i.APP.ORDERS.Value"
+    },
+    "payload": {
+        "ORDER_ID": 6,
+        "CUSTOMER_ID": 6,
+        "STATUS": "CREATED",
+        "TOTAL_AMOUNT": "RmQ="
+    }
+}
+{
+    "schema": {
+        "type": "struct",
+        "fields": [
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ORDER_ID"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "CUSTOMER_ID"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "STATUS"
+            },
+            {
+                "type": "bytes",
+                "optional": false,
+                "name": "org.apache.kafka.connect.data.Decimal",
+                "version": 1,
+                "parameters": {
+                    "scale": "2",
+                    "connect.decimal.precision": "12"
+                },
+                "field": "TOTAL_AMOUNT"
+            }
+        ],
+        "optional": false,
+        "name": "db2i.APP.ORDERS.Value"
+    },
+    "payload": {
+        "ORDER_ID": 13,
+        "CUSTOMER_ID": 13,
+        "STATUS": "DELIVERED",
+        "TOTAL_AMOUNT": "50.0"
+    }
+}
+{
+    "schema": {
+        "type": "struct",
+        "fields": [
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ORDER_ID"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "CUSTOMER_ID"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "STATUS"
+            },
+            {
+                "type": "bytes",
+                "optional": false,
+                "name": "org.apache.kafka.connect.data.Decimal",
+                "version": 1,
+                "parameters": {
+                    "scale": "2",
+                    "connect.decimal.precision": "12"
+                },
+                "field": "TOTAL_AMOUNT"
+            }
+        ],
+        "optional": false,
+        "name": "db2i.APP.ORDERS.Value"
+    },
+    "payload": {
+        "ORDER_ID": 16,
+        "CUSTOMER_ID": 16,
+        "STATUS": "DELIVERED",
+        "TOTAL_AMOUNT": "OO8="
+    }
+}
+{
+    "schema": {
+        "type": "struct",
+        "fields": [
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "ORDER_ID"
+            },
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "CUSTOMER_ID"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "STATUS"
+            },
+            {
+                "type": "bytes",
+                "optional": false,
+                "name": "org.apache.kafka.connect.data.Decimal",
+                "version": 1,
+                "parameters": {
+                    "scale": "2",
+                    "connect.decimal.precision": "12"
+                },
+                "field": "TOTAL_AMOUNT"
+            }
+        ],
+        "optional": false,
+        "name": "db2i.APP.ORDERS.Value"
+    },
+    "payload": {
+        "ORDER_ID": 17,
+        "CUSTOMER_ID": 17,
+        "STATUS": "CREATED",
+        "TOTAL_AMOUNT": "dyQ="
+    }
+}

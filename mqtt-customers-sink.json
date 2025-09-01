@@ -1,0 +1,16 @@
+{
+  "name": "mqtt-customers-sink",
+  "config": {
+    "connector.class": "io.lenses.streamreactor.connect.mqtt.sink.MqttSinkConnector",
+    "tasks.max": "1",
+    "topics": "db2i.APP.CUSTOMERS",
+    "connect.mqtt.hosts": "tcp://activemq:1883",
+    "connect.mqtt.kcql": "INSERT INTO mqtt/customers SELECT * FROM db2i.APP.CUSTOMERS WITHTYPE JSON",
+    "connect.mqtt.username": "admin",
+    "connect.mqtt.password": "password",
+    "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "value.converter.schemas.enable": "false",
+    "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+   "connect.mqtt.service.quality": 1
+  }
+}

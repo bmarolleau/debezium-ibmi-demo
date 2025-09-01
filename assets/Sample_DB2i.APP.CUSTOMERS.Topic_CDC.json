@@ -1,0 +1,580 @@
+{
+    "schema": {
+        "type": "struct",
+        "fields": [
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "CUSTOMER_ID"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "NAME"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "EMAIL"
+            }
+        ],
+        "optional": false,
+        "name": "db2i.APP.CUSTOMERS.Value"
+    },
+    "payload": {
+        "CUSTOMER_ID": 27,
+        "NAME": "Ada Lovelace",
+        "EMAIL": "ada.lovelace@example.com"
+    }
+}
+{
+    "schema": {
+        "type": "struct",
+        "fields": [
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "CUSTOMER_ID"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "NAME"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "EMAIL"
+            }
+        ],
+        "optional": false,
+        "name": "db2i.APP.CUSTOMERS.Value"
+    },
+    "payload": {
+        "CUSTOMER_ID": 29,
+        "NAME": "Clark Kent",
+        "EMAIL": "clark.kent@example.com"
+    }
+}
+{
+    "schema": {
+        "type": "struct",
+        "fields": [
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "CUSTOMER_ID"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "NAME"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "EMAIL"
+            }
+        ],
+        "optional": false,
+        "name": "db2i.APP.CUSTOMERS.Value"
+    },
+    "payload": {
+        "CUSTOMER_ID": 31,
+        "NAME": "Alice",
+        "EMAIL": "alice@example.com"
+    }
+}
+{
+    "schema": {
+        "type": "struct",
+        "fields": [
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "CUSTOMER_ID"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "NAME"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "EMAIL"
+            }
+        ],
+        "optional": false,
+        "name": "db2i.APP.CUSTOMERS.Value"
+    },
+    "payload": {
+        "CUSTOMER_ID": 2,
+        "NAME": "Bob Smith",
+        "EMAIL": "bob.smith@example.com"
+    }
+}
+{
+    "schema": {
+        "type": "struct",
+        "fields": [
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "CUSTOMER_ID"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "NAME"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "EMAIL"
+            }
+        ],
+        "optional": false,
+        "name": "db2i.APP.CUSTOMERS.Value"
+    },
+    "payload": {
+        "CUSTOMER_ID": 5,
+        "NAME": "Ethan Hunt",
+        "EMAIL": "ethan.hunt@example.com"
+    }
+}
+{
+    "schema": {
+        "type": "struct",
+        "fields": [
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "CUSTOMER_ID"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "NAME"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "EMAIL"
+            }
+        ],
+        "optional": false,
+        "name": "db2i.APP.CUSTOMERS.Value"
+    },
+    "payload": {
+        "CUSTOMER_ID": 8,
+        "NAME": "Hannah Wells",
+        "EMAIL": "hannah.wells@example.com"
+    }
+}
+{
+    "schema": {
+        "type": "struct",
+        "fields": [
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "CUSTOMER_ID"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "NAME"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "EMAIL"
+            }
+        ],
+        "optional": false,
+        "name": "db2i.APP.CUSTOMERS.Value"
+    },
+    "payload": {
+        "CUSTOMER_ID": 10,
+        "NAME": "Julia Roberts",
+        "EMAIL": "julia.roberts@example.com"
+    }
+}
+{
+    "schema": {
+        "type": "struct",
+        "fields": [
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "CUSTOMER_ID"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "NAME"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "EMAIL"
+            }
+        ],
+        "optional": false,
+        "name": "db2i.APP.CUSTOMERS.Value"
+    },
+    "payload": {
+        "CUSTOMER_ID": 18,
+        "NAME": "Rachel Green",
+        "EMAIL": "rachel.green@example.com"
+    }
+}
+{
+    "schema": {
+        "type": "struct",
+        "fields": [
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "CUSTOMER_ID"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "NAME"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "EMAIL"
+            }
+        ],
+        "optional": false,
+        "name": "db2i.APP.CUSTOMERS.Value"
+    },
+    "payload": {
+        "CUSTOMER_ID": 20,
+        "NAME": "Tony Stark",
+        "EMAIL": "tony.stark@example.com"
+    }
+}
+{
+    "schema": {
+        "type": "struct",
+        "fields": [
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "CUSTOMER_ID"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "NAME"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "EMAIL"
+            }
+        ],
+        "optional": false,
+        "name": "db2i.APP.CUSTOMERS.Value"
+    },
+    "payload": {
+        "CUSTOMER_ID": 23,
+        "NAME": "Wanda Maximoff",
+        "EMAIL": "wanda.maximoff@example.com"
+    }
+}
+{
+    "schema": {
+        "type": "struct",
+        "fields": [
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "CUSTOMER_ID"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "NAME"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "EMAIL"
+            }
+        ],
+        "optional": false,
+        "name": "db2i.APP.CUSTOMERS.Value"
+    },
+    "payload": {
+        "CUSTOMER_ID": 3,
+        "NAME": "Charlie Brown",
+        "EMAIL": "charlie.brown@example.com"
+    }
+}
+{
+    "schema": {
+        "type": "struct",
+        "fields": [
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "CUSTOMER_ID"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "NAME"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "EMAIL"
+            }
+        ],
+        "optional": false,
+        "name": "db2i.APP.CUSTOMERS.Value"
+    },
+    "payload": {
+        "CUSTOMER_ID": 6,
+        "NAME": "Fiona Gallagher",
+        "EMAIL": "fiona.gallagher@example.com"
+    }
+}
+{
+    "schema": {
+        "type": "struct",
+        "fields": [
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "CUSTOMER_ID"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "NAME"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "EMAIL"
+            }
+        ],
+        "optional": false,
+        "name": "db2i.APP.CUSTOMERS.Value"
+    },
+    "payload": {
+        "CUSTOMER_ID": 7,
+        "NAME": "George Michael",
+        "EMAIL": "george.michael@example.com"
+    }
+}
+{
+    "schema": {
+        "type": "struct",
+        "fields": [
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "CUSTOMER_ID"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "NAME"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "EMAIL"
+            }
+        ],
+        "optional": false,
+        "name": "db2i.APP.CUSTOMERS.Value"
+    },
+    "payload": {
+        "CUSTOMER_ID": 12,
+        "NAME": "Laura Palmer",
+        "EMAIL": "laura.palmer@example.com"
+    }
+}
+{
+    "schema": {
+        "type": "struct",
+        "fields": [
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "CUSTOMER_ID"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "NAME"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "EMAIL"
+            }
+        ],
+        "optional": false,
+        "name": "db2i.APP.CUSTOMERS.Value"
+    },
+    "payload": {
+        "CUSTOMER_ID": 17,
+        "NAME": "Quentin Blake",
+        "EMAIL": "quentin.blake@example.com"
+    }
+}
+{
+    "schema": {
+        "type": "struct",
+        "fields": [
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "CUSTOMER_ID"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "NAME"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "EMAIL"
+            }
+        ],
+        "optional": false,
+        "name": "db2i.APP.CUSTOMERS.Value"
+    },
+    "payload": {
+        "CUSTOMER_ID": 19,
+        "NAME": "Steve Rogers",
+        "EMAIL": "steve.rogers@example.com"
+    }
+}
+{
+    "schema": {
+        "type": "struct",
+        "fields": [
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "CUSTOMER_ID"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "NAME"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "EMAIL"
+            }
+        ],
+        "optional": false,
+        "name": "db2i.APP.CUSTOMERS.Value"
+    },
+    "payload": {
+        "CUSTOMER_ID": 22,
+        "NAME": "Victor Hugo",
+        "EMAIL": "victor.hugo@example.com"
+    }
+}
+{
+    "schema": {
+        "type": "struct",
+        "fields": [
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "CUSTOMER_ID"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "NAME"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "EMAIL"
+            }
+        ],
+        "optional": false,
+        "name": "db2i.APP.CUSTOMERS.Value"
+    },
+    "payload": {
+        "CUSTOMER_ID": 28,
+        "NAME": "Bruce Wayne",
+        "EMAIL": "bruce.wayne@example.com"
+    }
+}
+{
+    "schema": {
+        "type": "struct",
+        "fields": [
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "CUSTOMER_ID"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "NAME"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "EMAIL"
+            }
+        ],
+        "optional": false,
+        "name": "db2i.APP.CUSTOMERS.Value"
+    },
+    "payload": {
+        "CUSTOMER_ID": 30,
+        "NAME": "Dorothy Gale",
+        "EMAIL": "dorothy.gale@example.com"
+    }
+}
+{
+    "schema": {
+        "type": "struct",
+        "fields": [
+            {
+                "type": "int32",
+                "optional": false,
+                "field": "CUSTOMER_ID"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "NAME"
+            },
+            {
+                "type": "string",
+                "optional": false,
+                "field": "EMAIL"
+            }
+        ],
+        "optional": false,
+        "name": "db2i.APP.CUSTOMERS.Value"
+    },
+    "payload": {
+        "CUSTOMER_ID": 33,
+        "NAME": "Alice",
+        "EMAIL": "alice1@example.com"
+    }
+}

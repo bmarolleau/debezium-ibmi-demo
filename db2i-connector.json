@@ -1,5 +1,5 @@
 {
-  "name": "db2i-connector",
+  "name": "db2i-orders-cdc",
   "config": {
     "connector.class": "io.debezium.connector.db2as400.As400RpcConnector",
     "sanitize.field.names": "true",
@@ -19,9 +19,10 @@
     "database.user": "BENOIT",
     "database.password": "xxxxx",
     "database.driver.secure": "false",
-    "database.schema": "ACMEAIR",
-    "table.include.list": "ACMEAIR.CUSTOMER",
-    "topic.prefix": "db2i"
+    "database.schema": "APP",
+    "table.include.list": "APP.CUSTOMERS,APP.ORDERS,APP.ORDER_ITEMS",
+     "topic.prefix": "db2i",
+     "decimal.handling.mode":"double"
   }
 }
 

@@ -1,24 +1,39 @@
 version: '3.8'
 
+networks:
+  default:
+    name: kafka-net
+
 services:
-  zookeeper:
-    image: quay.io/debezium/zookeeper:2.7.3.Final
-    ports:
-      - "2181:2181"
-    environment:
-      ZOOKEEPER_CLIENT_PORT: 2181
 
   kafka:
-    image: debezium/kafka:2.7.3.Final 
-    depends_on:
-      - zookeeper
+    image: quay.io/debezium/kafka
+    container_name: kafka
     ports:
-      - "9092:9092"
+      - "9092:9092"       # host access
+      - "29092:29092"     # internal network
     environment:
-      - ZOOKEEPER_CONNECT=zookeeper:2181
-      - KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:29092,PLAINTEXT_HOST://0.0.0.0:9092
-      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://kafka:29092,PLAINTEXT_HOST://localhost:9092
-      - KAFKA_INTER_BROKER_LISTENER_NAME=PLAINTEXT
+      # KRaft mode: broker + controller
+      KAFKA_BROKER_ID: 1
+      KAFKA_PROCESS_ROLES: broker,controller
+      KAFKA_CONTROLLER_QUORUM_VOTERS: "1@kafka:9093"
+
+      # Listeners
+      KAFKA_LISTENERS: "PLAINTEXT://kafka:29092,PLAINTEXT_HOST://0.0.0.0:9092,CONTROLLER://0.0.0.0:9093"
+      KAFKA_ADVERTISED_LISTENERS: "PLAINTEXT://kafka:29092,PLAINTEXT_HOST://localhost:9092"
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: "PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT,CONTROLLER:PLAINTEXT"
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+
+      # Basic settings
+      KAFKA_LOG_DIRS: /var/lib/kafka/data
+      KAFKA_NUM_PARTITIONS: 3
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+
+    # Fresh data directory (empty on first run)
+    volumes:
+      - ./kafka-data:/var/lib/kafka/data
+
   connect:
     image: quay.io/debezium/connect:2.7.3.Final
     depends_on:
@@ -33,15 +48,48 @@ services:
       - STATUS_STORAGE_TOPIC=connect_statuses
       - SCHEMA_HISTORY_INTERNAL_KAFKA_BOOTSTRAP_SERVERS=kafka:29092
       - CONNECT_PLUGIN_PATH=/kafka/connect
+      - KEY_CONVERTER=org.apache.kafka.connect.json.JsonConverter
+      - VALUE_CONVERTER=org.apache.kafka.connect.json.JsonConverter
+      - KEY_CONVERTER_SCHEMAS_ENABLE="false"
+      - VALUE_CONVERTER_SCHEMAS_ENABLE="false"
     volumes:
-      - ./plugins/debezium-connector-ibmi:/kafka/connect/debezium-connector-ibmi:ro
-
+      - ./plugins:/kafka/connect
+   
   debezium-ui:
-    image: quay.io/debezium/debezium-ui:2.1.2.Final 
+    image: quay.io/debezium/debezium-ui:2.1.2.Final   
     depends_on:
       - connect
     ports:
       - "8090:8080"
     environment:
       - KAFKA_CONNECT_URIS=http://connect:8083
+ 
+  ksqldb-server:
+    image: confluentinc/ksqldb-server:0.29.0 
+    container_name: ksqldb-server
+    ports:
+      - "8088:8088"
+    environment:
+      KSQL_LOG4J_OPTS: "-Dlog4j.configuration=file:/etc/ksqldb/log4j.properties"
+      KSQL_CONFIG_DIR: "/etc/ksqldb"
+      KSQL_BOOTSTRAP_SERVERS: kafka:29092
+      KSQL_LISTENERS: http://0.0.0.0:8088
 
+  ksqldb-cli:
+    image: confluentinc/ksqldb-server:0.29.0 
+    container_name: ksqldb-cli
+    depends_on:
+      - ksqldb-server
+    entrypoint: /bin/sh
+    tty: true
+    
+  activemq:
+    image: apache/activemq-artemis
+    environment:
+      ARTEMIS_USER: admin 
+      ARTEMIS_PASSWORD: password
+      ANONYMOUS_LOGIN: true
+    ports:
+      - "1883:1883"     # MQTT
+      - "8161:8161"     # Web Console
+      - "61616:61616"   # Core protocol
