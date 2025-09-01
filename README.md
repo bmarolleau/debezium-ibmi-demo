@@ -3,21 +3,22 @@ This project describes how to set up a Change Data Capture (CDC) pipeline using 
 
 ![mqtt ibmi results](./assets/IBMi-DB2fori-Debezium-CDC-arch-overview.png)
 
-This example demonstrates how to use Debezium with DB2 for i to capture CDC, and deliver business events to an MQTT broker for IoT or event-driven microservices. Optionnally, we will transform raw row-level changes with ksqlDB declarative SQL, so we can stream and aggregate records on the fly before publishing them to the MQTT topic. 
-
+This example demonstrates how to use Debezium with DB2 for i, and deliver business events to a MQTT broker for IoT or event-driven microservices. 
 The final goal is to capture order-related changes from DB2 for i, publish Change Events on separate streams. 
-In phase 2, we will aggregate orders, customers, and items into a single event, and publish that enriched event to MQTT.
+In phase 2, optionnally, we will transform raw row-level changes with ksqlDB declarative SQL, so we can stream and aggregate records on the fly before publishing them to the MQTT topic. More precisely, we will aggregate orders, customers, and items into a single business event, and publish that enriched event to MQTT.
 
 ## CDC or not CDC ?
 
 Here is the definition: "Change data capture (CDC) is a pattern that enables database changes to be monitored and propagated to downstream systems. It is an effective way of enabling reliable microservices integration and solving typical challenges, such as gradually extracting microservices from existing monoliths."
-This Event-driven architecture is related to Cloud Design Patterns such as CDC, Outbox, CQRS, Event Sourcing. 
-Below, you'll find a list of possible alternatives that differ in complexity, performance vs. transactional throughput, consistency model...
-1) Write a program on IBM i or externally that regularly poll the DB2 for i database and publish new records externally. 
-2) Use of DB2 triggers feeding a data queue (*DTAQ), so any consumer like an external program relying on any technology that can use native IBM i objects like data queues (java, Apache Camel) can push events to MQTT 
-3) Use of a CDC technology, here Debezium, journal-based, to stream changes to another tier. Debezium is a Kafka technology, so table events will be publish on Kafka topics before we can push them to another component like a MQTT broker. This architecture is robust but requires more technologies, and it is eventually consistent. Optionally
-4) Outbox pattern with Debezium which requires the creation of an outbox domain driven table that aggregates records from several tables on the source database (here Db2 for i) instead of streaming events separately like in option 3. This pattern ensures the atomicity of the CDC operation but requires additional changes in the database and applications. 
+The Event-driven architecture implemented here is directly related to Cloud Design Patterns used in the industry to solve many modern issues in the micro-service era. Design Patterns such as CDC, Outbox, CQRS, Event Sourcing. 
+Before choosing such CDC implementation, take in consideration other possible alternatives that differ in complexity, performance vs. transactional throughput, consistency model.
+Examples of options are: 
+1) Use of a program on IBM i or externally that regularly poll the DB2 for i database and publish new records externally. Simple, but not necessarily real time.
+2) Use of DB2 triggers feeding a data queue (*DTAQ), so any consumer like an external program relying on any technology that can use native IBM i objects like data queues (java, Apache Camel) can push events to MQTT. Triggers have performance impacts, and requires cautions management.
+3) Use of a CDC technology, here Debezium, journal-based, to stream changes to another tier. Debezium is a Kafka technology, so table events are published in Kafka topics before we can push them to another component like a MQTT broker or any other application. This architecture is robust for real time use cases, open source based, but requires more technologies than the previous options, and event/data replication is strongly consistent when tracking changes on one table. In the case of a domain event on multiple tables, it must be combined with the Outbox pattern.
+4) Finally, the ultimate solution is CDC+ Outbox pattern with Debezium which requires the creation of an outbox domain driven table that aggregates records from several tables on the source database (here Db2 for i) instead of streaming events separately like in option 3. This pattern ensures the atomicity of the CDC operation but requires additional changes in the database and applications. It is strongly consistent. 
 
+In this project, we'll mainly focus on CDC but it can easily be upgrade to CDC+Outbox with a few modifications.
 
 ### Setup Overview
 - Run your DB2 for i DDL and insert/update sample data.
