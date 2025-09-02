@@ -2,7 +2,7 @@
 
 The scenario of this demonstration is the capture of order related changes from **DB2 for i**, change events that are then published on an external system, so **orders** and **customer** information can then be collected for **e-invoicing** for example.
 
-This project describes how to set up a **Change Data Capture (CDC)** pipeline using **Debezium** with **Db2 for i**, Kafka, ksqlDB, and ActiveMQ (MQTT broker). This CDC solution is able to capture and stream in **real-time Change Events** occuring on DB2 for i, and publish these Events, .i.e. new or updated records (rows), to another consumer, a database or another system. In our particular scenario, the events are published to a **MQTT** topic so all authorized applications can consume those data.
+This project describes how to set up a **Change Data Capture (CDC)** pipeline using **Debezium** with **Db2 for i**, Kafka, ksqlDB, and ActiveMQ (MQTT broker). This CDC solution is able to capture and stream in **real-time Change Events** occuring on DB2 for i, and publish these Events, .i.e. new, deleted or updated records (rows), to another consumer, a database or another system. In our particular scenario, the events are published to a **MQTT** topic so all authorized applications can consume those data.
 
 ![mqtt ibmi results](./assets/IBMi-DB2fori-Debezium-CDC-arch-overview.png)
  
@@ -18,7 +18,7 @@ Before opting for such CDC implementation, take in consideration other alternati
 4) The ultimate solution could be CDC + **[Outbox pattern](https://microservices.io/patterns/data/transactional-outbox.html)**  with Debezium. It requires the creation of an outbox domain driven table that aggregates records from several tables on the source database (here Db2 for i) instead of streaming events separately like in option 3. This pattern ensures the atomicity of the CDC operation but requires additional changes in the database and applications. The option is robust and strongly consistent. 
 5) It is good to know that in addition to open source and community supported CDC solutions like Debezium, IBM CDC offering called **[IBM InfoSphere CDC Replication Engine](https://www.ibm.com/docs/en/idr/11.4.0?topic=replication-cdc-engine-db2-i)** is a robust and mature solution with many connectors available. Other vendors propose also CDC and/or journaling (log) based replication tools compatible with Db2 for i. 
 Debezium CDC connector for IBM i does not support (*yet*) all data types available with DB2 for i like **BLOB** (used with JSON tables) or Geospatial ST_Point, so there are still many things to validate on a specific environment and the devil is always in the details. 
-6) Finally, other emerging projects, more IBM i centric, such as **[Mazan](https://theprez.github.io/Manzan/#/)** or **[AIStream](https://ibm.github.io/AI-IBMi-guide/stream_db2/aistream/)** are really promising. Powered by [Apache Camel](https://camel.apache.org/), **Manzan** is still in Technology Preview and is developed by the open community and IBM ([ThePrez](https://github.com/ThePrez) & team). It includes DB2 Table and SQL data sources as well as a lot of destinations! 
+6) Finally, other emerging projects, more IBM i centric, such as **[Manzan](https://theprez.github.io/Manzan/#/)** or **[AIStream](https://ibm.github.io/AI-IBMi-guide/stream_db2/aistream/)** are really promising. Powered by [Apache Camel](https://camel.apache.org/), **Manzan** is still in Technology Preview and is developed by the open community and IBM ([ThePrez](https://github.com/ThePrez) & team). It includes DB2 Table and SQL data sources as well as a lot of destinations! 
 
 
 In this project, we'll mainly focus on **Debezium CDC** , that can easily be upgraded to CDC+Outbox with a few modifications ^^ 
@@ -26,10 +26,10 @@ In this project, we'll mainly focus on **Debezium CDC** , that can easily be upg
 Please reach out if any questions.
 
 ### Setup Overview
-- **Run** your DB2 for i DDL and insert/update sample data.
+- **Run** your DB2 for i DDL to create the schema and insert/update sample data.
 - **Start** the CDC streaming stack with podman-compose or docker-compose
 - **Create** Debezium (in) and MQTT (sink, out) Connectors via curl.
-- **Generate** events on the source database & check
+- **Generate** events on the source database & check the MQTT topic
 - In a second step (work in progress) , **Run** the ksql SQL script to create the materialized tables and aggregate events on the fly. Indeed, the business objective is to publish shipping/billing information to MQTT, and not separate table events.
 
 ### Setup in 5 steps
@@ -67,7 +67,7 @@ This present docker-compose.yml file was tested on MacoS with Docker, and can be
 #### 4) Create Kafka Connect Connectors
 ##### Debezium DB2 for i Source Connector
 
-**Customize** `db2i-connector.json` with your credentials, library, table names, then run 
+**Customize** `db2i-connector.json` with your credentials, library, table names, then **run** 
 
 ```bash 
 curl -X POST -H "Content-Type: application/json" \
@@ -78,7 +78,7 @@ curl -X POST -H "Content-Type: application/json" \
 
 Let's create a Sink connector for each table to capture. In fact each table is captured in a Kafka topic, then used by a Sink connector to publis a message to the appropriate MQTT topic.
 
-**Customize** `mqtt-customers-sink.json`, `mqtt-orders-sink.json`, `mqqt-order-items-sink.json` with your credentials, mqtt broker, topic information then run the following commands:  
+**Customize** `mqtt-customers-sink.json`, `mqtt-orders-sink.json`, `mqqt-order-items-sink.json` with your credentials, mqtt broker, topic information then **run** the following commands:  
 
 ````bash
 curl -X POST -H "Content-Type: application/json" \
@@ -105,7 +105,7 @@ curl -X DELETE http://localhost:8083/connectors/<connector-name>
 ```
 where `<connector-name>` is the connector to delete.
 
-**Your three tables *customers* , *orders*, and *order-items* are now captures by Debezium and the Change Events are published to a MQTT Broker !!**
+**Your three tables *customers* , *orders*, and *order-items* are now captured by Debezium and the Change Events are published to a MQTT Broker !!**
 
 
 #### 5) Testing the Pipeline
