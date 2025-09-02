@@ -62,7 +62,7 @@ The following file podman-compose.yml runs:
 - **ActiveMQ** with MQTT support
 - Optionnally: ksqlDB server + CLI (optional, for event streaming join between tables/topics)
 
-This present docker-compose.yml file was tested on MacoS with Docker, and can be adapted for podman. Please feel free to PR if any suggestions.
+This present docker-compose.yml file was tested on MacOS with Docker, and can be adapted for podman. Please feel free to PR if any suggestions.
 
 #### 4) Create Kafka Connect Connectors
 ##### Debezium DB2 for i Source Connector
