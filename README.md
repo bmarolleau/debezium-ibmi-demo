@@ -5,7 +5,12 @@ The scenario of this demonstration is the capture of order related changes from 
 This project describes how to set up a **Change Data Capture (CDC)** pipeline using **Debezium** with **Db2 for i**, Kafka, ksqlDB, and ActiveMQ (MQTT broker). This CDC solution is able to capture and stream in **real-time Change Events** occuring on DB2 for i, and publish these Events, .i.e. new, deleted or updated records (rows), to another consumer, a database or another system. In our particular scenario, the events are published to a **MQTT** topic so all authorized applications can consume those data.
 
 ![mqtt ibmi results](./assets/IBMi-DB2fori-Debezium-CDC-arch-overview.png)
- 
+
+**Debezium** is an open source technology, supported by **Red Hat** as part of [Red Hat Integration](https://developers.redhat.com/integration/). 
+**Debezium connectors** are based on the popular [Apache Kafka Connect API](https://kafka.apache.org/documentation.html#connect) and can be deployed within [Red Hat MQ Streams](https://developers.redhat.com/products/amq/overview-) Kafka clusters.
+
+[Strimzi](https://strimzi.io/) provides a way to run an Apache Kafka cluster on Kubernetes in various deployment configurations. Combined with debezium as CDC connector and Openshift 4, you can setup this stack in minutes. You'll find an end-to end tutoria with mysql [here](https://ibm.box.com/v/cdc-debezium-tutorial).
+
 ## CDC or not CDC ?
 
 First, a quick definition: "**Change data capture (CDC)** is a pattern that enables database changes to be monitored and propagated to downstream systems. It is an effective way of enabling reliable microservices integration and solving typical challenges, such as gradually extracting microservices from existing monoliths."
