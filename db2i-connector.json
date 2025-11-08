@@ -17,7 +17,7 @@
     "database.hostname": "10.3.61.2",
     "database.dbname": "K70F3B70",
     "database.user": "BENOIT",
-    "database.password": "xxxx",
+    "database.password": "xxxxx",
     "database.driver.secure": "false",
     "database.schema": "APP",
     "table.include.list": "APP.CUSTOMERS,APP.ORDERS,APP.ORDER_ITEMS",
