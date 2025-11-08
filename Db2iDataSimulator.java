@@ -11,7 +11,7 @@ public class Db2iDataSimulator {
     private static final String HOST = "10.3.61.2";
     private static final String DATABASE = "K70F3B70";       // often optional for IBM i
     private static final String USER = "benoit";
-    private static final String PASSWORD = "abc123";
+    private static final String PASSWORD = "xxxxx";
     private static final String LIBRARY = "APP";       // your schema/library
     private static final int MIN_ORDER_ID = 1;
     private static final int MAX_ORDER_ID = 100;
