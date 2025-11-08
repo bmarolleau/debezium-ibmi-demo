@@ -3,10 +3,10 @@
   "config": {
     "connector.class": "io.confluent.connect.jdbc.JdbcSinkConnector",
     "topics": "db2i.APP.CUSTOMERS",
-     "connection.url": "jdbc:as400://10.3.61.2/K70F3B70;user=benoit;password=xxxxx;libraries=APP1;prompt=false;",
+     "connection.url": "jdbc:as400://10.3.61.2/K70F3B70;user=benoit;password=xxx;libraries=APP1;prompt=false;",
     "driver.class": "com.ibm.as400.access.AS400JDBCDriver",
 
-    "insert.mode": "upsert",
+    "insert.mode": "insert",
     "delete.enabled": "true",
     "primary.key.mode": "record_key",
 
