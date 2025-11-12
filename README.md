@@ -35,7 +35,8 @@ Please reach out if any questions.
 - **Start** the CDC streaming stack with podman-compose or docker-compose
 - **Create** Debezium (in) and MQTT (sink, out) Connectors via curl.
 - **Generate** events on the source database & check the MQTT topic
-- In a second step (work in progress) , **Run** the ksql SQL script to create the materialized tables and aggregate events on the fly. Indeed, the business objective is to publish shipping/billing information to MQTT, and not separate table events.
+- Optionnally, **Use** a DB2 for i sink connector to stream events to a remote Db2 for i database. 
+- In a second step (work in progress) , **Run** the ksql SQL script to create a "materialized table" and aggregate events on the fly. Indeed, remember that our business objective is to publish shipping/billing information to MQTT, and not separate table events.
 
 ### Setup in 5 steps
 #### 1) Database Setup (DB2 for i)
@@ -151,8 +152,47 @@ You should see JSON messages forwarded to the MQTT broker.
 
 ![mqtt ibmi results](./assets/e2e-result.png)
 
+5) Optionnaly, you can use `Db2iDataSimulator` to simulate updates in the database. 
+5.1) Edit `Db2iDataSimulator.java`and edit the variables `HOST`, `DATABASE`, `USER`, `PASSWORD`, `LIBRARY`
+5.3) Download the jt400.jar DB2 driver, copy it to the `drivers` directory
+5.2) Compile java class & run it:  
+    ````java
+    javac -cp ./drivers/jt400-jdk9-11.1.jar Db2iDataSimulator.java  
+    java -cp ./drivers/jt400-jdk9-11.1.jar:. Db2iDataSimulator
+    ✅ Connected to DB2 for i at 10.3.61.2
+    🔄 Updated order 19 → status=DELIVERED
+    🧮 Updated item 39 → QTY=5
+    🔄 Updated order 36 → status=SHIPPED
+    🧮 Updated item 40 → QTY=10
+    ```` 
 
-## ksqlDB Aggregations 
+## Use Db2 for i Sink Connector
+
+Additionnally to the MQTT Sink, we can also implement a Db2 to Db2 event replication.
+![alt text](./assets/DB2_to_DB2.png)
+1) Install the Confluent Sink Connector plugin, the default Debezium Sink Connector is Hibernate (java DAO) based and is not easily compatible with Db2 for i (please let me know if I am wrong)
+1.1) Download the plugin from https://www.confluent.io/hub/confluentinc/kafka-connect-jdbc , Self-hosted. 
+1.2) Unzip `confluentinc-kafka-connect-jdbc-V.R.M.zip`and copy/replace the folder `confluentinc-kafka-connect-jdbc` in the `plugns` directory.
+
+2) Create the target table on the remote system. The plugin can do it but not sure it is successful with DB2 for i. Basically, extract the DDL from the original table, remove all PK constraints. 
+````sql
+CREATE SCHEMA APP1;
+CREATE TABLE APP1.ORDSINK ( 
+	ORDER_ID INTEGER, 
+	CUSTOMER_ID FOR COLUMN CUSTO00001 INTEGER NOT NULL , 
+	STATUS VARCHAR(20) CCSID 37 NOT NULL , 
+	TOTAL_AMOUNT FOR COLUMN TOTAL00001 DECIMAL(12, 2) NOT NULL);
+````
+3) Create the JDBC Sink Connect: 
+  Customize  `jdbc-sink-db2i-orders-confluent.json` (`connection.url` , table, schema, `pk.fields` ...) and run: 
+````bash
+curl -X POST -H "Content-Type: application/json" \
+  --data @jdbc-sink-db2i-orders-confluent.json \
+  http://localhost:8083/connectors
+````
+4) Generate the load and see your events inserted in the APP1.ORDSINK table. 
+
+## ksqlDB Event aggregations 
 **draft - work in progress**
 
 In phase 2, optionnally, we will transform raw row-level changes with ksqlDB declarative SQL, so we can stream and aggregate records on the fly before publishing them to the MQTT topic. More precisely, we will aggregate orders, customers, and items into a single business event, and publish that enriched event to MQTT.

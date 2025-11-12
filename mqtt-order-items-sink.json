@@ -5,7 +5,7 @@
     "tasks.max": "1",
     "topics": "db2i.APP.ORDER_ITEMS",
     "connect.mqtt.hosts": "tcp://activemq:1883",
-    "connect.mqtt.kcql": "INSERT INTO mqtt/order_items SELECT * FROM db2i.APP.ORDER_ITEMS WITHTYPE JSON",
+    "connect.mqtt.kcql": "INSERT INTO mqtt/orderitems SELECT * FROM db2i.APP.ORDER_ITEMS WITHTYPE JSON",
     "connect.mqtt.username": "admin",
     "connect.mqtt.password": "password",
     "value.converter": "org.apache.kafka.connect.json.JsonConverter",

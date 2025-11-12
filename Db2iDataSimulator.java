@@ -14,9 +14,9 @@ public class Db2iDataSimulator {
     private static final String PASSWORD = "xxxxx";
     private static final String LIBRARY = "APP";       // your schema/library
     private static final int MIN_ORDER_ID = 1;
-    private static final int MAX_ORDER_ID = 100;
+    private static final int MAX_ORDER_ID = 37;
     private static final int MIN_ITEM_ID = 1;
-    private static final int MAX_ITEM_ID = 500;
+    private static final int MAX_ITEM_ID = 43;
 
     private static final String[] STATUSES = {"PENDING", "SHIPPED", "DELIVERED", "CANCELLED"};
     private static final Random RANDOM = new Random();

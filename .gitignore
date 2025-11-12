@@ -1,2 +1,3 @@
-drivers/jt400-11.1.jar
 drivers/jt400-jdk9-11.1.jar
+Db2iDataSimulator.class
+plugins/.DS_Store
